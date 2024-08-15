@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+using System.IO.Ports;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Taş_Kağıt_Makas
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("****Taş-Kağıt Makas Oyunu****");
+            Console.WriteLine("-----------------------------");
+
+            // Oyunda Bulunan Elemanlar;
+            string[] secenekler = { "taş", "kağıt", "makas" };
+
+            while (true)
+            { //Kullanıcıdan Değer Almak İçin
+                Console.WriteLine("Lütfen Birini Seçiniz.");
+                string secim = Console.ReadLine().ToLower();
+                if (secim == "taş")
+                {
+                    Console.WriteLine("Taş'ı Seçtiniz.");
+                }
+                else if (secim == "makas")
+                {
+                    Console.WriteLine("Makas'ı Seçtiniz.");
+                }
+                else if (secim == "kağıt")
+                {
+                    Console.WriteLine("Kağıt'ı Seçtiniz.");
+                }
+                // Listeden rastgele bir eleman seçilmesi için;
+                Random bilgisayar = new Random(); 
+                int bilgisayar_secimi = bilgisayar.Next(0, secenekler.Length); // Seçilen Liste Elemanının İndex Değerini Alıyor
+                string bilgisayar1 = secenekler[bilgisayar_secimi]; // String Hale Getiriyor...
+                Console.WriteLine("Bilgisayar Seçimi: "+bilgisayar1);
+
+                // Oyun Sonuçları...
+                if (secim == bilgisayar1)
+                {
+                    Console.WriteLine("Durum Berabere...");
+                }
+                else if ((secim == "taş" && bilgisayar1 == "makas") ||
+                        (secim == "kağıt" && bilgisayar1 == "taş") ||
+                        (secim == "makas" && bilgisayar1 == "kağıt"))   
+                {
+                    Console.WriteLine("Kazandınız...");
+                }
+                else
+                {
+                    Console.WriteLine("Kaybetiiniz");
+                }
+
+                Console.Read();
+                    
+            }
+            
+
+            
+
+            
+
+
+            
+            
+
+            
+
+
+            
+        }
+    }
+}
